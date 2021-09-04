@@ -28,7 +28,7 @@ DJANGO_CORE_APPS = [
 ]
 
 THIRD_PARTY_APSS = [
-
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
