@@ -16,3 +16,8 @@ def get_blog_info():
     blog_info_json = json.loads(req.text)
 
     return blog_info_json
+
+
+def get_blog_name():
+    blog_info_json = get_blog_info()
+    return blog_info_json['tistory']['item']['blogs'][0].get('name')

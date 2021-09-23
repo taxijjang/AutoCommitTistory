@@ -1,17 +1,21 @@
 import json
+import re
 from typing import *
+from html.parser import HTMLParser
 
 import requests
 
+from django.utils import html
+
 from .blog_info import get_blog_info
+from .blog_info import get_blog_name
 from config.secret import SECRET
 
 from tistory.models import Post
 
 
-def get_post_list(page: int = 1) -> Dict[str, str]:
-    blog_info = get_blog_info()
-    blog_name = blog_info['tistory']['item']['blogs'][0].get('name')
+def get_post_list(page:int = 1):
+    blog_name = get_blog_name()
     post_list_url = (
         "https://www.tistory.com/apis/post/list?"
         f"access_token={SECRET['tistory']['access_token']}"
@@ -19,29 +23,49 @@ def get_post_list(page: int = 1) -> Dict[str, str]:
         f"&blogName={blog_name}"
         f"&page={page}"
     )
-
     req = requests.get(post_list_url)
-    post_list_json = json.loads(req.text)
-    return post_list_json
+    return json.loads(req.text)
+
+    # req = requests.get(post_list_url)
+    # data = json.loads(req.text)
+    # tistory = data.get('tistory')
+    # item = tistory.get('item')
+    # posts = item.get('posts')
+    # return json.loads(posts)
 
 
-def save_post_object() -> List[int]:
-    page_cnt = 1
-    post_list_json = get_post_list(page_cnt)
+def get_post_max_page():
+    post_list_json = get_post_list()
     count = int(post_list_json.get('tistory').get('item').get('count'))
     total_count = int(post_list_json.get('tistory').get('item').get('totalCount'))
 
     max_page = total_count // count if total_count % count == 0 else total_count // count + 1
 
-    new_post_list = []
+    return max_page
 
+
+def get_post_id_list(page: int = 1) -> Dict[str, str]:
+    post_list_json = get_post_list()
+    post_id_list = list(map(int, re.findall(r'\d+', ''.join(re.findall(r'"id": "\d+', json.dumps(post_list_json))))))
+    return post_id_list
+
+
+def get_post_content(post_id, blog_name):
+    post_content_url = (
+        "https://www.tistory.com/apis/post/read?"
+        f"access_token={SECRET['tistory']['access_token']}"
+        f"&blogName={blog_name}"
+        f"&postId={post_id}"
+    )
+
+    req = requests.get(post_content_url)
+    data = json.loads(req.text)
+    return data.get('item')
+
+
+def save_post_object():
+    max_page = get_post_max_page()
     for page_cnt in range(max_page, 0, -1):
-        post_list_json = get_post_list(page_cnt)
-        items = post_list_json.get('tistory').get('item')
-        posts = items.get('posts')
-
+        posts = get_post_list(page_cnt).get('tistory').get('item').get('posts')
         for post in posts:
-            obj, create = Post.objects.get_or_create(**post)
-            if create:
-                new_post_list.append(obj.pk)
-    return new_post_list
+            Post.objects.get_or_create(**post)
