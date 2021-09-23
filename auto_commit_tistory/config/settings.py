@@ -29,6 +29,7 @@ DJANGO_CORE_APPS = [
 
 THIRD_PARTY_APSS = [
     'rest_framework',
+    'django_celery_beat',
 ]
 
 LOCAL_APPS = [

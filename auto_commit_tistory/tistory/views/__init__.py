@@ -7,3 +7,4 @@ from .post import get_post_max_page
 from .post import get_post_id_list
 from .post import get_post_content
 from .post import save_post_object
+from .post import make_post_md

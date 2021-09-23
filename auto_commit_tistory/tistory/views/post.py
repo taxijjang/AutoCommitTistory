@@ -1,20 +1,17 @@
-import json
 import re
+import json
 from typing import *
-from html.parser import HTMLParser
+from pathlib import Path
 
 import requests
 
-from django.utils import html
-
-from .blog_info import get_blog_info
 from .blog_info import get_blog_name
 from config.secret import SECRET
 
 from tistory.models import Post
 
 
-def get_post_list(page:int = 1):
+def get_post_list(page: int = 1):
     blog_name = get_blog_name()
     post_list_url = (
         "https://www.tistory.com/apis/post/list?"
@@ -69,3 +66,22 @@ def save_post_object():
         posts = get_post_list(page_cnt).get('tistory').get('item').get('posts')
         for post in posts:
             Post.objects.get_or_create(**post)
+
+
+def make_post_md():
+    posts = Post.objects.order_by('id').filter(auto_commit=False)
+    filepath = str(Path(__file__).parents[3]) + '/posts'
+
+    for post in posts:
+        try:
+            f = open(f'{filepath}/{post.id}-{post.title}.md', 'w', encoding="UTF8")
+            f.write(f'Bot에 의하여 생성된 파일 입니다. \n')
+            f.write(f'### {post.title} \n')
+            f.write(f'- {post.postUrl} \n')
+            f.write(f'- {post.date} \n')
+            f.close()
+            post.auto_commit = True
+            post.save()
+        except Exception:
+            post.auto_commit = False
+            post.save()
