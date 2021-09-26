@@ -4,6 +4,7 @@ from github import Github
 from github import InputGitAuthor
 from github import UnknownObjectException
 
+
 def get_github_repo(access_token, repository_name):
     """
     github repo object를 얻는 함수
@@ -36,34 +37,19 @@ def upload_github_push(repo, message, content, path, branch):
     :param branch:  대상 파일을 push 할 branch 위치
     :return: None
     """
-    source = repo.get_branch(branch)
-    update = None
+    author = InputGitAuthor(
+        'taxijjang',
+        'gw9122@naver.com'
+    )
+    source = repo.get_branch('master')
     try:
         # update old file to new file
-        file = repo.get_contents(path, branch)
-        # repo.update_file(path, message, posts_data,)
-        print("ASDF")
-        update = True
+        contents = repo.get_contents(path, branch)
+        data = json.loads(contents.decoded_content.decode('utf-8'))
+        data.update(content)
+        data = json.dumps(data, ensure_ascii=False, indent="\t")
+        repo.update_file(contents.path, message, data, contents.sha, branch=branch, author=author)
     except UnknownObjectException:
         # if old file is not exists make new file
-        file = ''
-        update = False
-
-
-def push(repo, message, new_data, path, branch, update=False):
-
-    file_path = 'auto_commit_tistory_git_action/posts.json'
-    old_file = repo.get_contents(file_path, ref="master")
-    old_data = json.loads(old_file.decoded_content.decode("utf-8"))
-    update_posts = old_data.update(new_data)
-    update_data = json.dumps(update_posts, ensure_ascii=False, indent="\t")
-
-
-    source = repo.get_branch('master')
-
-
-    head_sha = repo.get_branch('master').commit.sha
-
-    base_tree = repo.get_git_tree(sha=head_sha)
-    tree = repo.create_git_tree()
-    # repo.create_git_commit(issue_title)
+        data = json.dumps(content, ensure_ascii=False, indent="\t")
+        repo.create_file(path, message, data, branch=branch, author=author)
