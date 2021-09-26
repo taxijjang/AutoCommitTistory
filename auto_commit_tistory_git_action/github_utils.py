@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 
 from github import Github
 from github import InputGitAuthor
@@ -41,12 +42,16 @@ def upload_github_push(repo, message, content, path, branch):
         'taxijjang',
         'gw9122@naver.com'
     )
-    source = repo.get_branch('master')
     try:
         # update old file to new file
         contents = repo.get_contents(path, branch)
         data = json.loads(contents.decoded_content.decode('utf-8'))
         data.update(content)
+        data = dict(sorted(data.items()))
+        data = json.dumps(data, ensure_ascii=False, indent="\t")
+        repo.update_file(contents.path, message, data, contents.sha, branch=branch, author=author)
+    except JSONDecodeError:
+        data = dict(sorted(content.itmes()))
         data = json.dumps(data, ensure_ascii=False, indent="\t")
         repo.update_file(contents.path, message, data, contents.sha, branch=branch, author=author)
     except UnknownObjectException:

@@ -25,8 +25,8 @@ def main():
 
     if upload_issue_body:
         # upload new issue
-        # upload_github_issue(repo=repo, title=issue_title, body=upload_issue_body)
-        # print(f'{today_date} 블로그 포스팅 목록 Issue 등록 성공!')
+        upload_github_issue(repo=repo, title=issue_title, body=upload_issue_body)
+        print(f'{today_date} 블로그 포스팅 목록 Issue 등록 성공!')
 
         # upload new posts.json push
         upload_github_push(repo=repo, message=f'Add new posting {today_date_eng}',
