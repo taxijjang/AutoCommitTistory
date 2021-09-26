@@ -5,6 +5,7 @@ from post import get_issue_body
 from environ import environ_data
 from github_utils import get_github_repo
 from github_utils import upload_github_issue
+from github_utils import upload_github_push
 
 
 def main():
@@ -14,14 +15,20 @@ def main():
     issue_title = f'택시짱의 TISTORY 새로운 포스팅 알림({today_date})'
 
     repository_name = "AutoCommitTistory"
+    path = 'auto_commit_tistory_git_action/posts.json'
     access_token = environ_data().get('MY_GITHUB_ACCESS_TOKEN')
 
     repo = get_github_repo(access_token=access_token, repository_name=repository_name)
 
-    upload_issue_body = get_issue_body()
+    new_posts, upload_issue_body = get_issue_body()
+    upload_github_push(repo=repo, message='', content=new_posts, path=path, branch='master')
     if upload_issue_body:
-        upload_github_issue(repo=repo, title=issue_title, body=upload_issue_body)
-        print(f'{today_date} 블로그 포스팅 목록 Issue 등록 성공!')
+        # upload new issue
+        # upload_github_issue(repo=repo, title=issue_title, body=upload_issue_body)
+        # print(f'{today_date} 블로그 포스팅 목록 Issue 등록 성공!')
+
+        # upload new posts.json push
+        upload_github_push(repo=repo, message='', content=new_posts, path=path, branch='master')
         return None
     print(f'{today_date} 블로그 포스팅 목록이 없습니다.')
     return None

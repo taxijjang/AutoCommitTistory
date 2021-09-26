@@ -99,4 +99,4 @@ def get_issue_body():
 
         content = f'{id} - <a href={post_url}>{title}</a>, {create_at} <br/>\n'
         upload_issue_body += content
-    return upload_issue_body
+    return new_posts, upload_issue_body
