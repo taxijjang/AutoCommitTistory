@@ -67,46 +67,36 @@ def get_check_new_post():
         with open('posts.json', 'r') as f:
             posts_data = json.load(f)
     except JSONDecodeError:
+        # json file is empty
         posts_data = dict()
 
     new_posts = dict()
     tistory_posts = get_all_post_data()
-
     for id, data in tistory_posts.items():
+        # post is not visibility
+        if not data.get('visibility'):
+            continue
+        id = str(id)
         if not posts_data.get(id):
-            new_posts[id]=data
+            posts_data[id] = data
+            new_posts[id] = data
+
+    # make now posts_data in json file
+    with open('posts.json', 'w', encoding='utf-8') as make_file:
+        json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
+
     return new_posts
 
 
+def get_issue_body():
+    new_posts = get_check_new_post()
+    upload_issue_body = ''
+    for key, value in new_posts.items():
+        id = value.get('id')
+        title = value.get('title')
+        post_url = value.get('postUrl')
+        create_at = value.get('date')
 
-# def make_post_json_file():
-#     posts_data = get_all_post_data()
-#     with open('posts.json', 'w') as f:
-#         json.dumps(posts_data, f)
-#
-#     data
-# def save_post_object():
-#     max_page = get_post_max_page()
-#     for page_cnt in range(max_page, 0, -1):
-#         posts = get_post_list(page_cnt).get('tistory').get('item').get('posts')
-#         for post in posts:
-#             Post.objects.get_or_create(**post)
-#
-#
-# def make_post_md():
-#     posts = Post.objects.order_by('id').filter(auto_commit=False)
-#     filepath = str(Path(__file__).parents[3]) + '/posts'
-#
-#     for post in posts:
-#         try:
-#             f = open(f'{filepath}/{post.id}-{post.title}.md', 'w', encoding="UTF8")
-#             f.write(f'Bot에 의하여 생성된 파일 입니다. \n')
-#             f.write(f'### {post.title} \n')
-#             f.write(f'- {post.postUrl} \n')
-#             f.write(f'- {post.date} \n')
-#             f.close()
-#             post.auto_commit = True
-#             post.save()
-#         except Exception:
-#             post.auto_commit = False
-#             post.save()
+        content = f'{id} - <a href={post_url}>{title}</a>, {create_at} <br/>\n'
+        upload_issue_body += content
+    return upload_issue_body

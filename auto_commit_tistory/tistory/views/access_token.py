@@ -5,7 +5,7 @@ from config.secret import SECRET
 
 def get_access_token():
     # access token 획득시 소멸되는 1회용 code
-    code = '620834d8ff9baa5020474a4b9e76e6c5b03df56a24dbef0280d51d92b9fc64558ef8ce68'
+    code = 'a348a876bf49b7a9a4e01f2018b7ce008d23e92a621e79b59ecea3829de0b6c7046784dd'
     access_token_url = (
         'https://www.tistory.com/oauth/access_token?'
         f'client_id={SECRET["tistory"]["app_id"]}'
@@ -15,5 +15,8 @@ def get_access_token():
         f'&grant_type=authorization_code'
     )
 
+    print(access_token_url)
     req = requests.get(access_token_url)
-    print("abce")
+    print("ASDF")
+    # print)
+    # print("abce")
