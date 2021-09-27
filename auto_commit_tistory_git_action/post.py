@@ -64,7 +64,7 @@ def get_all_post_data():
 
 def get_check_new_post():
     try:
-        with open('posts.json', 'r') as f:
+        with open("posts.json", "r") as f:
             posts_data = json.load(f)
     except JSONDecodeError:
         # json file is empty
@@ -82,7 +82,7 @@ def get_check_new_post():
             new_posts[id] = data
 
     # make now posts_data in json file
-    with open('posts.json', 'w', encoding='utf-8') as make_file:
+    with open("posts.json", 'w', encoding='utf-8') as make_file:
         json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
 
     return new_posts
