@@ -18,6 +18,10 @@ jobs:
         python-version: [3.7, 3.8]
 
     steps:
+    - name: Open Auto Commit Tistory Git Action Directory
+      working-directory: auto_commit_tistory_git_action
+      run: |
+        ls -la
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
