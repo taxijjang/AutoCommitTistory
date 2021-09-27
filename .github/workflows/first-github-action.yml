@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: Open Auto Commit Tistory Git Action Directory
-      working-directory: AutoCommitTistory/auto_commit_tistory_git_action
+      working-directory: ./auto_commit_tistory_git_action
       run: |
         ls -la
     - uses: actions/checkout@v2
