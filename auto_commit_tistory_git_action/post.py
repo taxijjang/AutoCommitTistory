@@ -63,6 +63,7 @@ def get_all_post_data():
 
 
 def get_check_new_post():
+    print("/posts.json")
     try:
         with open("./posts.json", "r") as f:
             posts_data = json.load(f)
