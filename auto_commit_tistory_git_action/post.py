@@ -11,7 +11,14 @@ from blog_info import get_blog_name
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+
 def get_post_list(page: int = 1):
+    """
+    티스토리 open api를 이용하여
+    내가 작성한 블로그 글 목록을 가지고 오는 함수
+    :param page: 현재 보고자 하는 글 목록의 page 번호
+    :return: 현재 글 목록을 가지고 있는 page의 api response 를 dict로 변환
+    """
     blog_name = get_blog_name()
     post_list_url = (
         "https://www.tistory.com/apis/post/list?"
@@ -71,7 +78,6 @@ def get_check_new_post():
     except JSONDecodeError:
         # json file is empty
         posts_data = dict()
-
     new_posts = dict()
     tistory_posts = get_all_post_data()
     for id, data in tistory_posts.items():
@@ -86,7 +92,6 @@ def get_check_new_post():
     # make now posts_data in json file
     with open(os.path.join(BASE_DIR, "posts.json"), 'w', encoding='utf-8') as make_file:
         json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
-
     return new_posts
 
 
