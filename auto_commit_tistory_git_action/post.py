@@ -1,4 +1,5 @@
 import re
+import os
 import json
 from json import JSONDecodeError
 from typing import *
@@ -8,6 +9,7 @@ import requests
 from environ import environ_data
 from blog_info import get_blog_name
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_post_list(page: int = 1):
     blog_name = get_blog_name()
@@ -63,9 +65,8 @@ def get_all_post_data():
 
 
 def get_check_new_post():
-    print("/posts.json")
     try:
-        with open("./posts.json", "r") as f:
+        with open(os.path.join(BASE_DIR, 'posts.json'), "r") as f:
             posts_data = json.load(f)
     except JSONDecodeError:
         # json file is empty
@@ -83,7 +84,7 @@ def get_check_new_post():
             new_posts[id] = data
 
     # make now posts_data in json file
-    with open("./posts.json", 'w', encoding='utf-8') as make_file:
+    with open(os.path.join(BASE_DIR, "posts.json"), 'w', encoding='utf-8') as make_file:
         json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
 
     return new_posts
