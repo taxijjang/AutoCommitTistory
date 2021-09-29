@@ -1,13 +1,11 @@
-import re
 import os
 import json
 from json import JSONDecodeError
-from typing import *
 
 import requests
 
 from environ import environ_data
-from blog_info import get_blog_name
+from blog_info import Tistory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -19,7 +17,7 @@ def get_post_list(page: int = 1):
     :param page: 현재 보고자 하는 글 목록의 page 번호
     :return: 현재 글 목록을 가지고 있는 page의 data를 dict로 변환
     """
-    blog_name = get_blog_name()
+    blog_name = Tistory.get_blog_name()
     post_list_url = (
         "https://www.tistory.com/apis/post/list?"
         f"access_token={environ_data()['ACCESS_TOKEN']}"
@@ -39,25 +37,6 @@ def get_post_max_page():
     max_page = total_count // count if total_count % count == 0 else total_count // count + 1
 
     return max_page
-
-
-def get_post_id_list(page: int = 1) -> Dict[str, str]:
-    post_list_json = get_post_list()
-    post_id_list = list(map(int, re.findall(r'\d+', ''.join(re.findall(r'"id": "\d+', json.dumps(post_list_json))))))
-    return post_id_list
-
-
-def get_post_content(post_id, blog_name):
-    post_content_url = (
-        "https://www.tistory.com/apis/post/read?"
-        f"access_token={environ_data()['ACCESS_TOKEN']}"
-        f"&blogName={blog_name}"
-        f"&postId={post_id}"
-    )
-
-    req = requests.get(post_content_url)
-    data = json.loads(req.text)
-    return data.get('item')
 
 
 def get_all_post_data():
