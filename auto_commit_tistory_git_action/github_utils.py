@@ -26,7 +26,7 @@ def upload_github_issue(repo, title, body):
     :param body: issue body
     :return: None
     """
-    repo.create_issue(title=title, body=body)
+    repo.create_issue(title=title, body=body, labels=['new_posting', 'bot'])
 
 
 def upload_github_push(repo, message, content, path, branch):
@@ -49,12 +49,12 @@ def upload_github_push(repo, message, content, path, branch):
         data.update(content)
         data = dict(sorted(data.items()))
         data = json.dumps(data, ensure_ascii=False, indent="\t")
-        repo.update_file(contents.path, message, data, contents.sha, branch=branch, author=author)
+        repo.update_file(contents.path, message, data, contents.sha, branch=branch)
     except JSONDecodeError:
         data = dict(sorted(content.itmes()))
         data = json.dumps(data, ensure_ascii=False, indent="\t")
-        repo.update_file(contents.path, message, data, contents.sha, branch=branch, author=author)
+        repo.update_file(contents.path, message, data, contents.sha, branch=branch)
     except UnknownObjectException:
         # if old file is not exists make new file
         data = json.dumps(content, ensure_ascii=False, indent="\t")
-        repo.create_file(path, message, data, branch=branch, author=author)
+        repo.create_file(path, message, data, branch=branch)
