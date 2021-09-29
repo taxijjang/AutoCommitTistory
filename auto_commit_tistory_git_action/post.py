@@ -17,7 +17,7 @@ def get_post_list(page: int = 1):
     티스토리 open api를 이용하여
     내가 작성한 블로그 글 목록을 가지고 오는 함수
     :param page: 현재 보고자 하는 글 목록의 page 번호
-    :return: 현재 글 목록을 가지고 있는 page의 api response 를 dict로 변환
+    :return: 현재 글 목록을 가지고 있는 page의 data를 dict로 변환
     """
     blog_name = get_blog_name()
     post_list_url = (
