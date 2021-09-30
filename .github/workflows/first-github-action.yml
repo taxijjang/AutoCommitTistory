@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8]
+        python-version: [3.7]
 
     steps:
     - uses: actions/checkout@v2
@@ -23,12 +23,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Test echo
-      run: |
-        echo ${{ secrets.OUTPUT_TYPE }}
-    - name: Run Python
-      run: |
-        python3 hello.py
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
