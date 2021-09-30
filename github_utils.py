@@ -2,7 +2,6 @@ import json
 from json import JSONDecodeError
 
 from github import Github
-from github import InputGitAuthor
 from github import UnknownObjectException
 
 

@@ -1,4 +1,3 @@
-import os
 import json
 
 import requests
@@ -14,7 +13,7 @@ class Tistory:
         """
         blog_info_url = (
             "https://www.tistory.com/apis/blog/info?"
-            f"access_token={os.environ.get('ACCESS_TOKEN')}"
+            f"access_token={access_token}"
             f"&output=json"
         )
 
