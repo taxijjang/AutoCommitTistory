@@ -127,7 +127,6 @@ celerybeat.pid
 
 # Environments
 .env
-.env_git_action
 .venv
 env/
 venv/
