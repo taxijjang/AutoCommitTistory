@@ -1,0 +1,95 @@
+import os
+import json
+from json import JSONDecodeError
+
+import requests
+
+from blog_info import Tistory
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+class Post:
+    def __init__(self, access_token, json_file_name):
+        """
+        init post class
+        :param access_token: tistory에서 발급 받은 access_token
+        :param file_name: posts 목록 데이터를 저장할 file의 이름
+        """
+        self._access_token = access_token
+        self._json_file_name = json_file_name
+
+    def post_list(self, page=1):
+        """
+        Tistory open api를 이용하여
+        내가 작성한 블로그 글 목록을 가지고 오는 함수
+        :param page: 현재 보고자 하는 글 목록의 page 번호
+        :return: 현재 글 목록을 가지고 있는 page의 data를 dict로 변환
+        """
+        blog_name = Tistory.get_blog_name(access_token=self._access_token)
+        post_list_url = (
+            "https://www.tistory.com/apis/post/list?"
+            f"access_token={self._access_token}"
+            f"&output=json"
+            f"&blogName={blog_name}"
+            f"&page={page}"
+        )
+        req = requests.get(post_list_url)
+        return json.loads(req.text)
+
+    def post_max_page(self):
+        """
+        해당 유저의 access_token을 이용하여 post의 목록 data를 가지고 온 후에
+        post 목록 api에서 제공해주는 pagination 최대 page를 구하는 함수
+        :return: api에서 제공해주는 pagination의 최대 page
+        """
+        post_list_json = self.post_list()
+        count = int(post_list_json.get('tistory').get('item').get('count'))
+        total_count = int(post_list_json.get('tistory').get('item').get('totalCount'))
+        return total_count // count if total_count % count == 0 else total_count // count + 1
+
+    def all_post_data(self):
+        posts = dict()
+        max_page = self.post_max_page()
+        for page_cnt in range(max_page, 0, -1):
+            now_page_posts = self.post_list(page_cnt).get('tistory').get('item').get('posts')
+            for now_page_post in now_page_posts:
+                posts[int(now_page_post.get('id'))] = now_page_post
+        return dict(sorted(posts.items()))
+
+    def check_new_post(self):
+        try:
+            with open(os.path.join(BASE_DIR, f'{self._json_file_name}.json'), "r") as f:
+                posts_data = json.load(f)
+        except (FileNotFoundError, JSONDecodeError):
+            # json file is empty
+            posts_data = dict()
+
+        new_posts = dict()
+        tistory_posts = self.all_post_data()
+        for post_id, data in tistory_posts.items():
+            # post is not visibility
+            if not data.get('visibility'):
+                continue
+            post_id = str(post_id)
+            if not posts_data.get(post_id):
+                posts_data[post_id] = data
+                new_posts[post_id] = data
+
+        # make now posts_data in json file
+        with open(os.path.join(BASE_DIR, f"{self._json_file_name}.json"), 'w', encoding='utf-8') as make_file:
+            json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
+        return new_posts
+
+    def issue_body(self):
+        new_posts = self.check_new_post()
+        upload_issue_body = ''
+        for key, value in new_posts.items():
+            id = value.get('id')
+            title = value.get('title')
+            post_url = value.get('postUrl')
+            create_at = value.get('date')
+
+            content = f'{id} - <a href={post_url}>{title}</a>, {create_at} <br/>\n'
+            upload_issue_body += content
+        return new_posts, upload_issue_body
