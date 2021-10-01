@@ -9,3 +9,11 @@
 
 
 ### 실행 방법
+
+
+### 티스토리 access token 발급
+
+### github access token 발급
+
+
+### 환경 변수 설정
