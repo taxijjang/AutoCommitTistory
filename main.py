@@ -31,7 +31,7 @@ def main():
     issue_title = f'{os.environ.get("USERNAME")} TISTORY 새로운 포스팅 알림({today_date})'
 
     repository_name = os.environ.get('REPO_NAME')
-    path = f'{os.environ.get("REPO_NAME")}/{os.environ.get("JSON_FILE_NAME")}.json'
+    path = f'{os.environ.get("JSON_FILE_NAME")}.json'
     access_token = os.environ.get('MY_GITHUB_ACCESS_TOKEN')
 
     github_util = GithubUtil(access_token=access_token)
