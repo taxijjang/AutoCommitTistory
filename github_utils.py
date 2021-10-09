@@ -11,6 +11,7 @@ class GithubUtil:
         self._repo = None
 
     def set_github_repo(self, repository_name):
+        repository_name = "AutoCommitTistory"
         """
         github repo object를 얻는 함수
         :param repository_name: 해당 repo의 이름
