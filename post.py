@@ -10,14 +10,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Post:
-    def __init__(self, access_token, json_file_name):
+    def __init__(self, access_token):
         """
         init post class
         :param access_token: tistory에서 발급 받은 access_token
-        :param file_name: posts 목록 데이터를 저장할 file의 이름
         """
         self._access_token = access_token
-        self._json_file_name = json_file_name
 
     def post_list(self, page=1):
         """
@@ -59,11 +57,17 @@ class Post:
 
     def check_new_post(self):
         try:
-            with open(os.path.join(BASE_DIR, f'{self._json_file_name}.json'), "r") as f:
-                posts_data = json.load(f)
+            with open(os.path.join(BASE_DIR, 'posts.json'), "r") as f:
+                json_data = json.load(f)
+                if json_data.get('username') != os.environ.get('USERNAME'):
+                    # When you are a new author
+                    print("기존에 작성된 posts.json의 사용자와 다른 사용자 입니다.")
+                    raise FileNotFoundError
         except (FileNotFoundError, JSONDecodeError):
             # json file is empty
-            posts_data = dict()
+            json_data = dict()
+            json_data['username'] = os.environ.get('USERNAME')
+            json_data['posts'] = dict()
 
         new_posts = dict()
         tistory_posts = self.all_post_data()
@@ -72,13 +76,13 @@ class Post:
             if not data.get('visibility'):
                 continue
             post_id = str(post_id)
-            if not posts_data.get(post_id):
-                posts_data[post_id] = data
+            if not json_data.get('posts').get(post_id):
+                json_data['posts'][post_id] = data
                 new_posts[post_id] = data
 
         # make now posts_data in json file
-        with open(os.path.join(BASE_DIR, f"{self._json_file_name}.json"), 'w', encoding='utf-8') as make_file:
-            json.dump(posts_data, make_file, ensure_ascii=False, indent="\t")
+        with open(os.path.join(BASE_DIR,'posts.json'), 'w', encoding='utf-8') as make_file:
+            json.dump(json_data, make_file, ensure_ascii=False, indent="\t")
         return new_posts
 
     def issue_body(self):
