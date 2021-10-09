@@ -30,8 +30,7 @@
 ---
 ### 환경 변수 설정
 1. repo의 `settings`로 이동
-2. `settings`의 `Enviroments`에서 `New environment`를 이용하여 `secrets`를 생성
-3. 생성한 `secrets`를 눌러 `Environment secrets`에서 `Add Secret`를 이용하여 알맞은 환경 변수를 추가 합니다.
+2. `settings`의 `Secret`에서 `Actions secrets`를 이용하여 `New repository secret`를 생성
 ![AddEnvironment](./images/add_environ.png)
    
 - 환경 변수 정의
