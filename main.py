@@ -35,6 +35,7 @@ def main():
     access_token = os.environ.get('MY_GITHUB_ACCESS_TOKEN')
     print(len(access_token))
     print(len(repository_name))
+    print(len(os.environ.get('USERNAME')))
     github_util = GithubUtil(access_token=access_token)
 
     # check collect github repo
