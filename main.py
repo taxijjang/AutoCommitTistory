@@ -19,7 +19,6 @@ REDIRECT_URI: 본인 티스토리 주소를 입력합니다 ex) https://taxijjan
 ACCESS_TOKEN: tistory에서 발급 받은 access_token
 USERNAME: 이슈에 남길 이름 ex)USERNAME의 블로그
 REPO_NAME: 해당 프로젝트가 포함되어 있는 github repository의 이름
-JSON_FILE_NAME: tistory api로 가지고 온 post의 정보가 저장되는 file의 이름 ex) JSON_FILE_NAME.json
 """
 
 
@@ -31,7 +30,7 @@ def main():
     issue_title = f'{os.environ.get("USERNAME")} TISTORY 새로운 포스팅 알림({today_date})'
 
     repository_name = os.environ.get('REPO_NAME')
-    path = f'{os.environ.get("JSON_FILE_NAME")}.json'
+    path = 'posts.json'
     access_token = os.environ.get('MY_GITHUB_ACCESS_TOKEN')
 
     github_util = GithubUtil(access_token=access_token)
@@ -42,7 +41,6 @@ def main():
     # post objects
     post = Post(
         access_token=os.environ.get('ACCESS_TOKEN'),
-        json_file_name=os.environ.get('JSON_FILE_NAME')
     )
 
     # get new_post
@@ -60,7 +58,7 @@ def main():
     # upload new json file push
     github_util.upload_github_push(message=f'Add new posting {today_date_eng}',
                                    content=new_posts, path=path, branch='master')
-    print(f'{today_date} {os.environ.get("JSON_FILE_NAME")} push 성공!')
+    print(f'{today_date} posts.json push 성공!')
     return None
 
 

@@ -23,7 +23,6 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           APP_ID: ${{ secrets.APP_ID }}
-          JSON_FILE_NAME: ${{ secrets.JSON_FILE_NAME }}
           MY_GITHUB_ACCESS_TOKEN: ${{ secrets.MY_GITHUB_ACCESS_TOKEN }}
           REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
           REPO_NAME: ${{ secrets.REPO_NAME }}
