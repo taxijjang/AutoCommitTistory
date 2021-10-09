@@ -81,6 +81,7 @@ class Post:
                 new_posts[post_id] = data
 
         # make now posts_data in json file
+        print(json_data)
         with open(os.path.join(BASE_DIR,'posts.json'), 'w', encoding='utf-8') as make_file:
             json.dump(json_data, make_file, ensure_ascii=False, indent="\t")
         return new_posts
