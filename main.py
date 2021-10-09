@@ -39,7 +39,7 @@ def main():
     try:
         github_util.set_github_repo(os.environ.get('REPO_NAME'))
     except BadCredentialsException:
-        print("github repo가 유효하지 않습니다.")
+        print("github repository 유효하지 않습니다.")
         return None
 
     # set my repository
