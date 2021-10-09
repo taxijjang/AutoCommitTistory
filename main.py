@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from pytz import timezone
+from github import BadCredentialsException
 
 from github_utils import GithubUtil
 from post import Post
@@ -34,6 +35,13 @@ def main():
     access_token = os.environ.get('MY_GITHUB_ACCESS_TOKEN')
 
     github_util = GithubUtil(access_token=access_token)
+
+    # check collect github repo
+    try:
+        github_util.set_github_repo(os.environ.get('REPO_NAME'))
+    except BadCredentialsException:
+        print("github repo가 유효하지 않습니다.")
+        return None
 
     # set my repository
     github_util.set_github_repo(repository_name=repository_name)
