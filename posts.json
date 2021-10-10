@@ -1270,6 +1270,26 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2021-10-10 14:55:44"
+		},
+		"143": {
+			"id": "143",
+			"title": "9장. 함수 기반 뷰의 모범적인 이용",
+			"postUrl": "https://taxijjang.tistory.com/143",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-10-10 15:13:17"
+		},
+		"144": {
+			"id": "144",
+			"title": "티스토리 앱 등록 & Access Token 발급",
+			"postUrl": "https://taxijjang.tistory.com/144",
+			"visibility": "20",
+			"categoryId": "0",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-10-10 16:41:31"
 		}
 	}
 }
