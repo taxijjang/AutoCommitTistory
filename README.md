@@ -16,8 +16,6 @@
 [추가된 json파일](https://github.com/taxijjang/AutoCommitTistory/blob/master/posts.json)
 ![add_posting_data](./images/add_posting_data.png)
 
----
-### 티스토리 앱 등록
 
 ---
 ### 티스토리 access token 발급
