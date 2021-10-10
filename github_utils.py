@@ -1,4 +1,5 @@
 import json
+import os
 from json import JSONDecodeError
 
 from github import Github
@@ -18,10 +19,6 @@ class GithubUtil:
         """
         g = Github(self._access_token)
         self._repo = g.get_user().get_repo(repository_name)
-
-    def get_github_login_id(self):
-        g = Github(self._access_token)
-        return g.get_user().login
 
     def upload_github_issue(self, title, body, labels=None):
         """
@@ -45,15 +42,23 @@ class GithubUtil:
         try:
             contents = self._repo.get_contents(path, branch)
             data = json.loads(contents.decoded_content.decode('utf-8'))
-            data.update(content)
-            data = dict(sorted(data.items()))
-            data = json.dumps(data, ensure_ascii=False, indent='\t')
+            data = self._check_json_username(data=data, content=content)
             self._repo.update_file(contents.path, message, data, contents.sha, branch=branch)
         except JSONDecodeError:
-            data = dict(sorted(content.items()))
-            data = json.dumps(data, ensure_ascii=False, indent='\t')
+            data = self._check_json_username(content=content)
             self._repo.update_file(contents.path, message, data, contents.sha, branch=branch)
         except UnknownObjectException:
             # if old file is not exists make new file
-            data = json.dumps(content, ensure_ascii=False, indent='\t')
+            data = self._check_json_username(content=content)
             self._repo.create_file(path, message, data, branch=branch)
+
+    def _check_json_username(self, content, data=None):
+        data = data if data else dict()
+        if data.get('username') != os.environ.get('USERNAME'):
+            data['username'] = os.environ.get('USERNAME')
+            data['posts'] = content
+        else:
+            data['posts'].update(content)
+        data = dict(sorted(data.items(), reverse=True))
+        data = json.dumps(data, ensure_ascii=False, indent='\t')
+        return data

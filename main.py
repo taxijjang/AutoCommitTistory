@@ -47,8 +47,7 @@ def main():
 
     # post objects
     post = Post(
-        access_token=os.environ.get('ACCESS_TOKEN'),
-        github_login=github_util.get_github_login_id()
+        access_token=os.environ.get('ACCESS_TOKEN')
     )
 
     # get new_post
