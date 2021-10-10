@@ -27,5 +27,4 @@ jobs:
           REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
           REPO_NAME: ${{ secrets.REPO_NAME }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          STATE_PARAM: ${{ secrets.STATE_PARAM }}
           USERNAME: ${{ secrets.USERNAME }}

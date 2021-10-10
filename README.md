@@ -16,10 +16,12 @@
 [추가된 json파일](https://github.com/taxijjang/AutoCommitTistory/blob/master/posts.json)
 ![add_posting_data](./images/add_posting_data.png)
 
-  
+---
+### 티스토리 앱 등록
+
 ---
 ### 티스토리 access token 발급
-- [티스토리 access token 발급 방법](https://tistory.github.io/document-tistory-apis/auth/authorization_code.html)
+- [티스토리 access token 발급 방법](https://taxijjang.tistory.com/144)
 
 
 ---
@@ -41,7 +43,6 @@ MY_GITHUB_ACCESS_TOKEN: github에서 발급한 access token
 - tistory
 APP_ID: 발급된 app_id
 SECRET_KEY: secret_key
-STATE_PARAM: state_param
 REDIRECT_URI: 본인 티스토리 주소를 입력합니다 ex) https://taxijjang.tistory.com
 ACCESS_TOKEN: tistory에서 발급 받은 access_token
 USERNAME: 이슈에 남길 이름 ex)USERNAME의 블로그
