@@ -16,6 +16,16 @@
 [추가된 json파일](https://github.com/taxijjang/AutoCommitTistory/blob/master/posts.json)
 ![add_posting_data](./images/add_posting_data.png)
 
+---
+### 사용방법
+1. AutoCommitTistory repository를 fork 한다.
+    ![repository fork 방법](./images/repo_fork.png)
+   
+
+2. 아래에서 티스토리 access token과 github access token을 발급 한다.
+   
+
+3. fork를 한 위치의 repository에 발급한 token과 여러 환경 변수들을 github repository secret에 추가한다.
 
 ---
 ### 티스토리 access token 발급
