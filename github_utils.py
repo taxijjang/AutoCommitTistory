@@ -19,6 +19,10 @@ class GithubUtil:
         g = Github(self._access_token)
         self._repo = g.get_user().get_repo(repository_name)
 
+    def get_github_login_id(self):
+        g = Github(self._access_token)
+        return g.get_user().login
+
     def upload_github_issue(self, title, body, labels=None):
         """
         해당 repo의 issue에 새롭게 작성된 post의 내용을 등록하는 함수

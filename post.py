@@ -10,12 +10,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Post:
-    def __init__(self, access_token):
+    def __init__(self, access_token, github_login):
         """
         init post class
         :param access_token: tistory에서 발급 받은 access_token
+        :parma github_login: github access token 으로 인증된 사용자
         """
         self._access_token = access_token
+        self._github_login = github_login
 
     def post_list(self, page=1):
         """
@@ -59,14 +61,14 @@ class Post:
         try:
             with open(os.path.join(BASE_DIR, 'posts.json'), "r") as f:
                 json_data = json.load(f)
-                if json_data.get('username') != os.environ.get('USERNAME'):
+                if json_data.get('username') != self._github_login:
                     # When you are a new author
                     print("기존에 작성된 posts.json의 사용자와 다른 사용자 입니다.")
                     raise FileNotFoundError
         except (FileNotFoundError, JSONDecodeError):
             # json file is empty
             json_data = dict()
-            json_data['username'] = os.environ.get('USERNAME')
+            json_data['username'] = self._github_login
             json_data['posts'] = dict()
 
         new_posts = dict()
