@@ -46,5 +46,4 @@ REDIRECT_URI: 본인 티스토리 주소를 입력합니다 ex) https://taxijjan
 ACCESS_TOKEN: tistory에서 발급 받은 access_token
 USERNAME: 이슈에 남길 이름 ex)USERNAME의 블로그
 REPO_NAME: 해당 프로젝트가 포함되어 있는 github repository의 이름
-JSON_FILE_NAME: tistory api로 가지고 온 post의 정보가 저장되는 file의 이름 ex) JSON_FILE_NAME.json
 ```
