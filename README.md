@@ -10,17 +10,17 @@
 - git action을 이용하여 UTC 기준 14시 45분 (KST 기준 23시 34분)에 현재 새롭게 작성된 블로그 글이 있는지 확인 하여 새로운 이슈 생성과 json파일에 post정보 저장
 [포스팅 알림 이슈 링크](https://github.com/taxijjang/AutoCommitTistory/labels/new_posting)
 - 새로운 이슈 등록
-<img src="./images/new_issue.png" width="40%" height="40%">
+<img src="./images/new_issue.png" width="50%" height="50%">
 
   
 - json파일에 포스팅 정보 저장
 [추가된 json파일](https://github.com/taxijjang/AutoCommitTistory/blob/master/posts.json)
-<img src="./images/add_posting_data.png" width="40%" height="40%">
+<img src="./images/add_posting_data.png" width="50%" height="50%">
 
 ---
 ### 사용방법
 1. AutoCommitTistory repository를 fork 한다.
-<img src="./images/repo_fork.png" width="40%" height="40%">
+<img src="./images/repo_fork.png" width="50%" height="50%">
    
 
 2. 아래에서 티스토리 access token과 github access token을 발급 한다.
@@ -42,7 +42,7 @@
 ### 환경 변수 설정
 1. repo의 `settings`로 이동
 2. `settings`의 `Secret`에서 `Actions secrets`를 이용하여 `New repository secret`를 생성
-<img src="./images/add_environ.png" width="40%" height="40%">
+<img src="./images/add_environ.png" width="50%" height="50%">
    
 - 환경 변수 정의
 ```
