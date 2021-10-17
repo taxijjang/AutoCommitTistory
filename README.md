@@ -8,7 +8,7 @@
 ---
 ### 결과
 - git action을 이용하여 UTC 기준 14시 45분 (KST 기준 23시 34분)에 현재 새롭게 작성된 블로그 글이 있는지 확인 하여 새로운 이슈 생성과 json파일에 post정보 저장
-[포스팅 알림 이슈 링크](https://github.com/taxijjang/AutoCommitTistory/issues/35_)
+[포스팅 알림 이슈 링크](https://github.com/taxijjang/AutoCommitTistory/labels/new_posting)
 - 새로운 이슈 등록
 ![new_issue](./images/new_issue.png)
   
