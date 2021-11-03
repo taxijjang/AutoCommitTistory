@@ -1310,6 +1310,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2021-10-29 15:01:02"
+		},
+		"147": {
+			"id": "147",
+			"title": "18장. 장고 코어 모듈을 교체할 때 주의점",
+			"postUrl": "https://taxijjang.tistory.com/147",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-11-03 23:23:51"
 		}
 	}
 }
