@@ -1360,6 +1360,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-01-09 00:04:26"
+		},
+		"152": {
+			"id": "152",
+			"title": "classmethod vs staticmethod",
+			"postUrl": "https://taxijjang.tistory.com/152",
+			"visibility": "20",
+			"categoryId": "775005",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-01-16 18:18:14"
 		}
 	}
 }
