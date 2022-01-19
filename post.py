@@ -10,9 +10,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Post:
-    PRIVATE = '0'
-    PENDING = '15'
-    PUBLIC = '20'
+    PRIVATE = 0
+    PENDING = 15
+    PUBLIC = 20
 
     def __init__(self, access_token):
         """
@@ -56,7 +56,7 @@ class Post:
         for page_cnt in range(max_page, 0, -1):
             now_page_posts = self.post_list(page_cnt).get('tistory').get('item').get('posts')
             for now_page_post in now_page_posts:
-                if now_page_post.get('visibility') != self.PUBLIC:
+                if int(now_page_post.get('visibility')) != self.PUBLIC:
                     continue
                 posts[int(now_page_post.get('id'))] = now_page_post
         return dict(sorted(posts.items()))
@@ -79,7 +79,7 @@ class Post:
         tistory_posts = self.all_post_data()
         for post_id, data in tistory_posts.items():
             # post is not visibility
-            if data.get('visibility') != self.PUBLIC:
+            if int(data.get('visibility')) != self.PUBLIC:
                 continue
             post_id = str(post_id)
             if not json_data.get('posts').get(post_id):
@@ -96,7 +96,7 @@ class Post:
         new_posts = self.check_new_post()
         upload_issue_body = ''
         for key, value in new_posts.items():
-            if value.get('visibility') != self.PUBLIC:
+            if int(value.get('visibility')) != self.PUBLIC:
                 continue
             id = value.get('id')
             title = value.get('title')
