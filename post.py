@@ -52,7 +52,7 @@ class Post:
         for page_cnt in range(max_page, 0, -1):
             now_page_posts = self.post_list(page_cnt).get('tistory').get('item').get('posts')
             for now_page_post in now_page_posts:
-                if now_page_post.get('visibility') != 20:
+                if now_page_post.get('visibility') != '20':
                     continue
                 posts[int(now_page_post.get('id'))] = now_page_post
         return dict(sorted(posts.items()))
