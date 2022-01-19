@@ -8,6 +8,9 @@ from blog_info import Tistory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+PRIVATE = '0'
+PENDING = '15'
+PUBLIC = '20'
 
 class Post:
     def __init__(self, access_token):
@@ -52,6 +55,8 @@ class Post:
         for page_cnt in range(max_page, 0, -1):
             now_page_posts = self.post_list(page_cnt).get('tistory').get('item').get('posts')
             for now_page_post in now_page_posts:
+                if now_page_post.get('visibility') != PUBLIC:
+                    continue
                 posts[int(now_page_post.get('id'))] = now_page_post
         return dict(sorted(posts.items()))
 
@@ -73,7 +78,7 @@ class Post:
         tistory_posts = self.all_post_data()
         for post_id, data in tistory_posts.items():
             # post is not visibility
-            if data.get('visibility') != "20":
+            if data.get('visibility') != PUBLIC:
                 continue
             post_id = str(post_id)
             if not json_data.get('posts').get(post_id):
