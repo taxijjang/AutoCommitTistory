@@ -1290,6 +1290,86 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2021-10-10 16:41:31"
+		},
+		"145": {
+			"id": "145",
+			"title": "10장. 클래스 기반 뷰의 모범적인 이용",
+			"postUrl": "https://taxijjang.tistory.com/145",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-10-11 00:12:46"
+		},
+		"146": {
+			"id": "146",
+			"title": "django rest framework에 질문 이메일을 보내봤다.",
+			"postUrl": "https://taxijjang.tistory.com/146",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-10-29 15:01:02"
+		},
+		"147": {
+			"id": "147",
+			"title": "18장. 장고 코어 모듈을 교체할 때 주의점",
+			"postUrl": "https://taxijjang.tistory.com/147",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-11-03 23:23:51"
+		},
+		"148": {
+			"id": "148",
+			"title": "19장. 장고 어드민 이용하기",
+			"postUrl": "https://taxijjang.tistory.com/148",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-11-08 23:44:43"
+		},
+		"149": {
+			"id": "149",
+			"title": "24장. 장고 성능 향상시키기",
+			"postUrl": "https://taxijjang.tistory.com/149",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-12-08 22:54:54"
+		},
+		"150": {
+			"id": "150",
+			"title": "25장. 비동기 태스크 큐",
+			"postUrl": "https://taxijjang.tistory.com/150",
+			"visibility": "20",
+			"categoryId": "769288",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2021-12-09 14:00:31"
+		},
+		"151": {
+			"id": "151",
+			"title": "[2019-2021] 대기업 취직에 실패한 1년차 백엔드 개발자의 회고 - 1편",
+			"postUrl": "https://taxijjang.tistory.com/151",
+			"visibility": "20",
+			"categoryId": "0",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-01-09 00:04:26"
+		},
+		"152": {
+			"id": "152",
+			"title": "classmethod vs staticmethod",
+			"postUrl": "https://taxijjang.tistory.com/152",
+			"visibility": "20",
+			"categoryId": "775005",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-01-16 18:18:14"
 		}
 	}
 }
