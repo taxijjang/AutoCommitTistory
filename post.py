@@ -95,6 +95,8 @@ class Post:
         new_posts = self.check_new_post()
         upload_issue_body = ''
         for key, value in new_posts.items():
+            if value.get('visibility') != PUBLIC:
+                continue
             id = value.get('id')
             title = value.get('title')
             post_url = value.get('postUrl')
