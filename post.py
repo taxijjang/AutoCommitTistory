@@ -52,8 +52,6 @@ class Post:
         for page_cnt in range(max_page, 0, -1):
             now_page_posts = self.post_list(page_cnt).get('tistory').get('item').get('posts')
             for now_page_post in now_page_posts:
-                if now_page_post.get('visibility') != '20':
-                    continue
                 posts[int(now_page_post.get('id'))] = now_page_post
         return dict(sorted(posts.items()))
 
@@ -75,7 +73,7 @@ class Post:
         tistory_posts = self.all_post_data()
         for post_id, data in tistory_posts.items():
             # post is not visibility
-            if not data.get('visibility'):
+            if data.get('visibility') != "20":
                 continue
             post_id = str(post_id)
             if not json_data.get('posts').get(post_id):
