@@ -1450,6 +1450,26 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-02-21 21:25:56"
+		},
+		"168": {
+			"id": "168",
+			"title": "객체지향 프로그래밍 (OOP) 4가지 원칙",
+			"postUrl": "https://taxijjang.tistory.com/168",
+			"visibility": "20",
+			"categoryId": "919080",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-02-24 00:50:08"
+		},
+		"169": {
+			"id": "169",
+			"title": "Database 인덱스(index)가 뭐지..?",
+			"postUrl": "https://taxijjang.tistory.com/169",
+			"visibility": "20",
+			"categoryId": "792273",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-02-24 18:04:59"
 		}
 	}
 }
