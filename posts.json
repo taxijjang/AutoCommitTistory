@@ -1490,6 +1490,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-03-07 23:34:14"
+		},
+		"173": {
+			"id": "173",
+			"title": "mro(method resolution order)가 뭐지..?",
+			"postUrl": "https://taxijjang.tistory.com/173",
+			"visibility": "20",
+			"categoryId": "775005",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-03-22 22:30:18"
 		}
 	}
 }
