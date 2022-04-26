@@ -1520,6 +1520,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-04-01 21:28:12"
+		},
+		"176": {
+			"id": "176",
+			"title": "DB Transaction과 ACID란?",
+			"postUrl": "https://taxijjang.tistory.com/176",
+			"visibility": "20",
+			"categoryId": "0",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-04-26 22:11:15"
 		}
 	}
 }
