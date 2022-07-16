@@ -1530,6 +1530,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-04-26 22:11:15"
+		},
+		"177": {
+			"id": "177",
+			"title": "prometheus, grafana로 django 모니터링하기 - 1 (prometheus, grafana 설치)",
+			"postUrl": "https://taxijjang.tistory.com/177",
+			"visibility": "20",
+			"categoryId": "919082",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-07-16 21:49:00"
 		}
 	}
 }
