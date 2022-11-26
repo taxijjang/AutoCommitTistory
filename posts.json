@@ -1560,6 +1560,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-10-23 15:13:17"
+		},
+		"180": {
+			"id": "180",
+			"title": "Docker로 배포시 발생한 오류 - no space left on device",
+			"postUrl": "https://taxijjang.tistory.com/180",
+			"visibility": "20",
+			"categoryId": "919080",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-11-26 17:16:19"
 		}
 	}
 }
