@@ -1570,6 +1570,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-11-26 17:16:19"
+		},
+		"181": {
+			"id": "181",
+			"title": "AWS EC2 freetier instance에 spring boot 배포시 멈춤 현상",
+			"postUrl": "https://taxijjang.tistory.com/181",
+			"visibility": "20",
+			"categoryId": "952783",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2022-12-04 18:08:58"
 		}
 	}
 }
