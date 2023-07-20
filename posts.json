@@ -1580,6 +1580,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2022-12-04 18:08:58"
+		},
+		"182": {
+			"id": "182",
+			"title": "Spring Cloud OpenFeign의 Logging 방법",
+			"postUrl": "https://taxijjang.tistory.com/182",
+			"visibility": "20",
+			"categoryId": "952783",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2023-07-07 09:57:41"
 		}
 	}
 }
