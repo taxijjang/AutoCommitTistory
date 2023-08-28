@@ -1,5 +1,8 @@
 # AutoCommitTistory
 [![tistory_auto_commit](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml/badge.svg?branch=master)](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml)
+
+### [내용 정리 블로그](https://taxijjang.tistory.com/171)
+
 ### 개요
 - 블로그 포스팅을 tistory에서 현재 진행을 하고 있는데, github에도 나의 블로그 포스팅의 기록을 남기고 싶어서 진행한 프로젝트
 - 티스토리에 작성한 글을 확인하고 자동으로 commit, issue 등록
