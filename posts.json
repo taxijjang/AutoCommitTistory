@@ -1610,6 +1610,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2023-11-28 12:24:10"
+		},
+		"185": {
+			"id": "185",
+			"title": "Cloudfront Lambda@Edge Image Resize - 이미지 사이즈 조절하기",
+			"postUrl": "https://taxijjang.tistory.com/185",
+			"visibility": "20",
+			"categoryId": "793393",
+			"comments": "0",
+			"trackbacks": "0",
+			"date": "2023-12-21 11:07:10"
 		}
 	}
 }
