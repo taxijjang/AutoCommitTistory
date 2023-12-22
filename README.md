@@ -1,5 +1,7 @@
-# AutoCommitTistory
+# AutoCommitTistory (티스토리 작성으로 잔디를 찍자!)
 [![tistory_auto_commit](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml/badge.svg?branch=master)](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml)
+
+#### star를 눌러주실때 마다 큰 보람을 느낍니다!
 
 ### [내용 정리 블로그](https://taxijjang.tistory.com/171)
 
