@@ -1620,6 +1620,16 @@
 			"comments": "0",
 			"trackbacks": "0",
 			"date": "2023-12-21 11:07:10"
+		},
+		"186": {
+			"id": "186",
+			"title": "Spring Boot Jdbc Bulk Update 삽질기 (Feat. VALUES Parsing Problem)",
+			"postUrl": "https://taxijjang.tistory.com/186",
+			"visibility": "20",
+			"categoryId": "952783",
+			"comments": "1",
+			"trackbacks": "0",
+			"date": "2024-02-15 10:47:34"
 		}
 	}
 }
