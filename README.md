@@ -1,3 +1,16 @@
+# 티스토리 Open API가 종료 된다고 합니다.
+https://notice.tistory.com/2664
+
+### 추후 티스토리에서 open api 를 제공 할때 까지 해당 프로젝트의 유지보수를 진행하지 않겠습니다.
+
+
+
+
+
+
+
+
+
 # AutoCommitTistory (티스토리 작성으로 잔디를 찍자!)
 [![tistory_auto_commit](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml/badge.svg?branch=master)](https://github.com/taxijjang/AutoCommitTistory/actions/workflows/tistory_auto_commit.yml)
 
